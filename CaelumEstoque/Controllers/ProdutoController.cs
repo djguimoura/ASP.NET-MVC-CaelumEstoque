@@ -60,6 +60,16 @@ namespace CaelumEstoque.Controllers
             }
 
         }
+
+        //CRIANDO VISUALIZAÇÃO INDIVIDUAL DE PRODUTOS
+        public ActionResult Visualiza(int id)
+        {
+            DAO.ProdutosDAO dao = new DAO.ProdutosDAO();
+            Models.Produto produto = dao.BuscaPorId(id);
+            ViewBag.Produto = produto;
+            return View();
+
+        }
     }
 }
 

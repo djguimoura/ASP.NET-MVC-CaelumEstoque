@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Visualiza";
+}
+
+<h2>Visualiza</h2>
+
+<div>
+    Id: @ViewBag.Produto.Id</br>
+    Nome: @ViewBag.Produto.Nome</br>
+    Categoria: @ViewBag.Produto.Categoria.Nome</br>
+    Preço: @ViewBag.Produto.Preco</br>
+    Descrição: @ViewBag.Produto.Descricao</br>
+    Quantidade: @ViewBag.Produto.Quantidade</br>
+
+    <!--Parâmetros do ActionLink(texto, nomeDaAction, nomeDoController)-->
+    <!--REDIRECIONA PARA O INDEX(VIEW) DA CONTROLLER ESPECIFICADA-->
+    @Html.ActionLink("Voltar para a lista", "Index", "Produto")
+
+</div>

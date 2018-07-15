@@ -1,4 +1,8 @@
-﻿
+﻿<!--VIEWS FORTEMENTE TIPADAS-->
+<!--COMANDO model DO RAZOR-->
+<!--model IList<CaelumEstoque.Models.Produto>-->
+<!--COM ISSO ESTAMOS DECLARANDO QUAL É O TIPO DA VARIÁVEL MODEL QUE ESTÁ SENDO UTILIZADA NA VIEW E POR ISSO PODEMOS UTILIZAR LIVREMENTE A INFERÊNCIA DE TIPOS NO CÓDIGO DO FOREACH-->
+
 @{
     Layout = null;
 }
@@ -23,14 +27,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var produto in ViewBag.produtos)
-             {
-                <tr>
-                    <td>@produto.Id</td>
-                    <td>@produto.Nome</td>
-                    <td>@produto.Quantidade</td>
-                    <td>@produto.Preco</td>
-                </tr>
+                @foreach (CaelumEstoque.Models.Produto produto in ViewBag.Produtos)
+                {
+                    <tr>
+                        <td>@produto.Id</td>
+                        <!--O ACTIONLINK POSSUI UMA VERSÃO SOBRECARREGADA QUE RECEBE O TEXTO DO LINK, O NOME DA ACTION E UM OBJETO CUJOS ATRIBUTOS SERÃO UTILIZADOS PARA PREENCHER OS PARÂMETROS DA URL-->
+                        <td>@Html.ActionLink(produto.Nome, "Visualiza", new { id = produto.Id })</td>
+                        <td>@produto.Quantidade</td>
+                        <td>@produto.Preco</td>
+                    </tr>
                 }
             </tbody>
         </table>
