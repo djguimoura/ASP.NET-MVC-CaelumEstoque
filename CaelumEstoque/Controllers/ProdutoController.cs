@@ -9,15 +9,13 @@ namespace CaelumEstoque.Controllers
     public class ProdutoController : Controller
     {
         // GET: Produto
+        [Route("produtos", Name ="ListaProdutos")]
         public ActionResult Index()
         {
             DAO.ProdutosDAO dao = new DAO.ProdutosDAO();
-
-            IList<Models.Produto> produtos = dao.Lista();
+            var produtos = dao.Lista();
             //PARA ENVIARMOS INFORMAÇÕES PARA A CAMADA DE VISUALIZAÇÃO, PODEMOS UTILIZAR A VARIÁVEL VIEWBAG HERDADA DA CLASSE CONTROLLER
-            ViewBag.Produtos = produtos;
-
-            return View();
+            return View(produtos);
         }
 
         public ActionResult Form()
@@ -62,6 +60,7 @@ namespace CaelumEstoque.Controllers
         }
 
         //CRIANDO VISUALIZAÇÃO INDIVIDUAL DE PRODUTOS
+        [Route("produtos/{id}", Name ="VisualizaProduto")]
         public ActionResult Visualiza(int id)
         {
             DAO.ProdutosDAO dao = new DAO.ProdutosDAO();

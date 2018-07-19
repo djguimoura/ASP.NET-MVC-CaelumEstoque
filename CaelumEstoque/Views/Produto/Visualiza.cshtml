@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Visualiza";
+    Layout = null;
 }
 
 <h2>Visualiza</h2>
@@ -15,6 +15,7 @@
 
     <!--Parâmetros do ActionLink(texto, nomeDaAction, nomeDoController)-->
     <!--REDIRECIONA PARA O INDEX(VIEW) DA CONTROLLER ESPECIFICADA-->
-    @Html.ActionLink("Voltar para a lista", "Index", "Produto")
+    <!--SUBSTITUIDO PELO ROUTELINK DEVIDO AS ROTAS CUSTOMIZADAS-->
+    @Html.RouteLink("Voltar para a lista", "ListaProdutos")
 
 </div>

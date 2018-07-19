@@ -1,6 +1,6 @@
 ﻿<!--VIEWS FORTEMENTE TIPADAS-->
 <!--COMANDO model DO RAZOR-->
-<!--model IList<CaelumEstoque.Models.Produto>-->
+@model IList<CaelumEstoque.Models.Produto>
 <!--COM ISSO ESTAMOS DECLARANDO QUAL É O TIPO DA VARIÁVEL MODEL QUE ESTÁ SENDO UTILIZADA NA VIEW E POR ISSO PODEMOS UTILIZAR LIVREMENTE A INFERÊNCIA DE TIPOS NO CÓDIGO DO FOREACH-->
 
 @{
@@ -27,15 +27,17 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (CaelumEstoque.Models.Produto produto in ViewBag.Produtos)
+                @foreach (var produto in Model)
                 {
-                    <tr>
-                        <td>@produto.Id</td>
-                        <!--O ACTIONLINK POSSUI UMA VERSÃO SOBRECARREGADA QUE RECEBE O TEXTO DO LINK, O NOME DA ACTION E UM OBJETO CUJOS ATRIBUTOS SERÃO UTILIZADOS PARA PREENCHER OS PARÂMETROS DA URL-->
-                        <td>@Html.ActionLink(produto.Nome, "Visualiza", new { id = produto.Id })</td>
-                        <td>@produto.Quantidade</td>
-                        <td>@produto.Preco</td>
-                    </tr>
+                <tr>
+                    <td>@produto.Id</td>
+                    <!--O ACTIONLINK POSSUI UMA VERSÃO SOBRECARREGADA QUE RECEBE O TEXTO DO LINK, O NOME DA ACTION E UM OBJETO CUJOS ATRIBUTOS SERÃO UTILIZADOS PARA PREENCHER OS PARÂMETROS DA URL-->
+                    <!--Html.ActionLink(produto.Nome, "Visualiza", new { id = produto.Id })-->
+                    <!--SUBSTITUIDO PELO ROUTELINK DEVIDO AS ROTAS ESTAREM CUSTOMIZADAS, PARÂMETROS DO ROUTELINK: Nome do atributo a ser exibido, nome da rota de visualização e objeto anônimo para buscar o id do produto-->
+                    <td>@Html.RouteLink(produto.Nome, "VisualizaProduto", new { id = produto.Id })</td>
+                    <td>@produto.Quantidade</td>
+                    <td>@produto.Preco</td>
+                </tr>
                 }
             </tbody>
         </table>
