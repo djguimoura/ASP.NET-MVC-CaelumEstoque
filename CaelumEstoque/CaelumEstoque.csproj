@@ -89,9 +89,9 @@
     <Content Include="App_Data\DBEstoque_log.ldf">
       <DependentUpon>DBEstoque.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Css\bootstrap.css" />
+    <Content Include="Content\Css\bootstrap.min.css" />
+    <Content Include="Content\Css\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

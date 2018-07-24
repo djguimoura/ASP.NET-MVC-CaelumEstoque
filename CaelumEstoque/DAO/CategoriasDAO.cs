@@ -19,6 +19,7 @@ namespace CaelumEstoque.DAO
 
         public IList<CategoriaDoProduto> Lista()
         {
+
             using (var contexto = new EstoqueContext())
             {
                 return contexto.Categorias.ToList();
