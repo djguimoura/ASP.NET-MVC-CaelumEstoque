@@ -9,10 +9,10 @@ namespace CaelumEstoque.Controllers
     public class CategoriaController : Controller
     {
         // GET: Categoria
+        [Route("categorias", Name = "ListaCategorias")]
         public ActionResult Index()
         {
             DAO.CategoriasDAO dao = new DAO.CategoriasDAO();
-
             IList<Models.CategoriaDoProduto> categorias = dao.Lista();
             //Para enviarmos informações para a camada de visualização, podemos utilizar a variável ViewBag herdada da classe Controller
             ViewBag.Categorias = categorias;
