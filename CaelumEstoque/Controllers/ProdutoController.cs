@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CaelumEstoque.DAO;
+using CaelumEstoque.Models;
 
 namespace CaelumEstoque.Controllers
 {
@@ -69,6 +71,17 @@ namespace CaelumEstoque.Controllers
             ViewBag.Produto = produto;
             return View();
 
+        }
+
+        //DECREMENTANDO QUANTIDADES DE PRODUTOS NO BANCO (RETIRANDO)
+        public ActionResult DecrementaQtd(int id)
+        {
+            ProdutosDAO dao = new ProdutosDAO();
+            Produto produto = dao.BuscaPorId(id);
+            produto.Quantidade--;
+            dao.Atualiza(produto);
+            //PARA DEVOLVER UMA RESPOTA COM O FORMATO JS
+            return Json(produto);
         }
     }
 }

@@ -12,6 +12,7 @@
                 <th>Nome</th>
                 <th>Quantidade</th>
                 <th>Preço</th>
+                <th>Deletar Quantidade</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +24,9 @@
                     <!--Html.ActionLink(produto.Nome, "Visualiza", new { id = produto.Id })-->
                     <!--SUBSTITUIDO PELO ROUTELINK DEVIDO AS ROTAS ESTAREM CUSTOMIZADAS, PARÂMETROS DO ROUTELINK: Nome do atributo a ser exibido, nome da rota de visualização e objeto anônimo para buscar o id do produto-->
                     <td class="mouse">@Html.RouteLink(produto.Nome, "VisualizaProduto", new { id = produto.Id })</td>
-                    <td>@produto.Quantidade</td>
+                    <td id="quantidade@(produto.Id)">@produto.Quantidade</td> <!--ESPECIFICANDO CADA PRODUTO PARA CADA QTD ATRAVÉS DO RAZOR-->
                     <td>@produto.Preco</td>
+                    <td><a href="#" style="margin-left: 20px;" onclick="decrementa(@produto.Id)">Decrementar</a></td>
                 </tr>
             }
         </tbody>
@@ -34,3 +36,21 @@
     <button type="button" class="btn btn-default mouse">@Html.RouteLink("Cadastrar Produtos", "FormProduto")</button>
 </div>
 
+<!--IMPORTANDO BIBLIOTECA JQUERY PARA UTILIZAÇÃO DAS REQUISIÇÕES DO MÉTODO DE DECREMENTAR VIA AJAX DO JS-->
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+<!--CRIANDO REQUISIÇÃO ASSINCRONA VIA AJAX COM JQUERY UTILIZANDO O ARGUMENTO $.POST(URL, PARAMS)-->
+<script type="text/javascript">
+
+    function decrementa(produtoId) {
+        var url = "@Url.Action("DecrementaQtd", "Produto")";
+        var params = { id: produtoId };
+        //REQUISIÇÃO AJAX DO TIPO $.POST, TBM PODE SER FEITA PELO TIPO $.AJAX
+        $.post(url, params, atualiza);
+    }
+
+    function atualiza(resposta) {
+        var elemento = $("#quantidade" + resposta.Id);
+        elemento.html(resposta.Quantidade);
+    }
+</script>
