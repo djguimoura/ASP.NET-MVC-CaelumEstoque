@@ -40,3 +40,15 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.mouse a:hover {
+    /* background-color: darkcyan;
+   // color:antiquewhite;*/
+    color: white;
+    text-decoration: none;
+}
+
+.custom_button {
+    color: white;
+    text-decoration: none;
+}

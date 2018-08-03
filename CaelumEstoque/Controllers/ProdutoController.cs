@@ -18,6 +18,7 @@ namespace CaelumEstoque.Controllers
             return View(produtos);
         }
 
+        [Route("produto", Name = "FormProduto")]
         public ActionResult Form()
         {
             //PARA INSERIR A LISTA DE OPÇÕES DO COMBO BOX DE CATEGORIAS NO FORM DE PRODUTOS

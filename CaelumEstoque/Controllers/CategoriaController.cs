@@ -20,6 +20,7 @@ namespace CaelumEstoque.Controllers
             return View();
         }
 
+        [Route("categoria", Name = "FormCategoria")]
         public ActionResult Form()
         {
             return View();

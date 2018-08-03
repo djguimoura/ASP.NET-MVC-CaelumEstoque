@@ -1,12 +1,17 @@
-﻿<div>
+﻿<fieldset>
+    <legend>Preencha os dados abaixo:</legend>
     <!--no caminho da action indicar o nome da pasta da view onde encontra-se a página que será retornada (index)-->
     <form action="/Categoria/Adiciona" method="post">
-        <label for="nome">Nome:</label>
-        <input id="nome" name="categoria.Nome" />
+        <div class="form-group row col-md-12">
+            <label for="nome">Nome:</label>
+            <input id="nome" name="categoria.Nome" class="form-control" />
 
-        <label for="descricao">Descrição:</label>
-        <input id="descricao" name="categoria.Descricao" />
-
-        <input type="submit" value="Cadastrar" />
+            <label for="descricao">Descrição:</label>
+            <input id="descricao" name="categoria.Descricao" class="form-control" />
+            </br>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="button" class="btn mouse btn-default">@Html.RouteLink("Voltar", "ListaCategorias")</button>
+            <!--<input type="submit" value="Cadastrar" />-->
+        </div>
     </form>
-</div>
+</fieldset>

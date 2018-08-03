@@ -1,32 +1,53 @@
-﻿<div>
-    <form action="/Produto/Adiciona" method="post">
-        <label for="nome">Nome:</label>
-        <input id="nome" name="produto.Nome" value="@ViewBag.Produto.Nome" class="form-control" /><br />
-        @Html.ValidationMessage("produto.Nome")<br />
+﻿
+<fieldset>
+    <legend>Preencha os dados abaixo:</legend>
+    <form action="/Produto/Adiciona" method="post" class="">
+        <div class="form-group row col-md-12">
+            <label for="nome" class="col-md-2">Nome:</label>
+            <div class="col-md-4">
+                <input id="nome" name="produto.Nome" value="@ViewBag.Produto.Nome" class="form-control" placeholder="Nome" />
+                @Html.ValidationMessage("produto.Nome")
+            </div>
+            <label for="preco" class="col-md-2">Preço:</label>
+            <div class="col-md-4">
+                <input id="preco" name="produto.Preco" value="@ViewBag.Produto.Preco" class="form-control" />
+                @Html.ValidationMessage("produto.Preco")
+                @Html.ValidationMessage("produto.Invalido")
+            </div>
+        </div>
+        <div class="form-group row col-md-12">
 
-        <label for="preco">Preço:</label>
-        <input id="preco" name="produto.Preco" value="@ViewBag.Produto.Preco" class="form-control" /><br />
-        @Html.ValidationMessage("produto.Preco")<br />
-        @Html.ValidationMessage("produto.Invalido")<br />
+            <label for="quantidade" class="col-md-2">Quantidade:</label>
+            <div class="col-md-4">
+                <input id="quantidade" name="produto.Quantidade" value="@ViewBag.Produto.Quantidade" class="form-control" />
+                @Html.ValidationMessage("produto.Quantidade")
+            </div>
 
-        <label for="quantidade">Quantidade:</label>
-        <input id="quantidade" name="produto.Quantidade" value="@ViewBag.Produto.Quantidade" class="form-control" /><br />
-        @Html.ValidationMessage("produto.Quantidade")<br />
+            <label for="descricao" class="col-md-2">Descrição:</label>
+            <div class="col-md-4">
+                <input id="descricao" name="produto.Descricao" value="@ViewBag.Produto.Descricao" class="form-control" />
+                @Html.ValidationMessage("produto.Descricao")
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <label for="categoria" class="col-md-2">Categoria:</label>
+            <div class="col-md-4">
+                <select id="categoria" name="produto.CategoriaId" class="form-control">
+                    @foreach (var categoria in ViewBag.Categorias)
+                    {
+                        <option value="@categoria.Id">@categoria.Nome</option>
+                    }
+                </select><br />
+            </div>
+        </div>
 
-        <label for="descricao">Descrição:</label>
-        <input id="descricao" name="produto.Descricao" value="@ViewBag.Produto.Descricao" class="form-control" /><br />
-        @Html.ValidationMessage("produto.Descricao")<br />
-
-        <label for="categoria">Categoria:</label>
-        <select id="categoria" name="produto.CategoriaId" class="form-control">
-            @foreach (var categoria in ViewBag.Categorias)
-            {
-                <option value="@categoria.Id">@categoria.Nome</option>
-            }
-        </select><br />
-
-        <input type="submit" value="Cadastrar" />
+        <div class="row col-md-12">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="button" class="btn mouse btn-default">@Html.RouteLink("Voltar", "ListaProdutos")</button>
+                <!--<input type="submit" value="Cadastrar" />-->
+            </div>
+        </div>
 
     </form>
-</div>
-
+</fieldset>

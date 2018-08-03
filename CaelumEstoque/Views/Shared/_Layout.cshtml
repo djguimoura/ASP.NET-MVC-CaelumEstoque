@@ -6,6 +6,7 @@
     <title>Index</title>
     <link rel="stylesheet" href="~/Content/Css/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/Css/Site.css" />
+    <script src="~/Content/js/jquery.js"></script>
 </head>
 <body>
     <div class="container">
@@ -15,10 +16,10 @@
                     <a class="navbar-brand">Caelum Estoque</a>
                 </div>
                 <ul class="nav navbar-nav pull-right">
-                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Produtos", "Index", "Produto")</li>
-                    <li>@Html.ActionLink("Categorias", "Index", "Categoria")</li>
-                    <li>@Html.ActionLink("Usuários", "Index", "Usuario")</li>
+                    <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Produto" ? "active" : "")">@Html.ActionLink("Produtos", "Index", "Produto")</li>
+                    <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Categoria" ? "active" : "")">@Html.ActionLink("Categorias", "Index", "Categoria")</li>
+                    <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Usuario" ? "active" : "")">@Html.ActionLink("Usuários", "Index", "Usuario")</li>
                 </ul>
             </div>
         </nav>
@@ -29,3 +30,19 @@
     </div>
 </body>
 </html>
+
+<!--
+<script type="text/javascript">
+    // só executa esse trecho qd o documento estiver pronto, qd carregar a página toda
+    $(document).ready(function () {
+        // executa a função só qd vc clica num elemento "a" que esteja dentro de um "li" que esteja dentro de um "ul"
+        $('ul li a').click(function () {
+            console.log("teste");
+            // aqui ele remove a classe active da aba que atualmente ta ativa
+            $('li').removeClass("active");
+            // aqui ele cria a classe active para a aba que vc clicar
+            $(this).parent("li").addClass("active");
+        });
+    });
+</script>
+    -->
