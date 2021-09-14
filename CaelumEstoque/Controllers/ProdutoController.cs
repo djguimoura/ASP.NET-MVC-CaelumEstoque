@@ -80,7 +80,7 @@ namespace CaelumEstoque.Controllers
             Produto produto = dao.BuscaPorId(id);
             produto.Quantidade--;
             dao.Atualiza(produto);
-            //PARA DEVOLVER UMA RESPOTA COM O FORMATO JS
+            //PARA DEVOLVER UMA RESPOSTA COM O FORMATO JS
             return Json(produto);
         }
     }
