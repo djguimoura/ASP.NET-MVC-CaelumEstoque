@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using CaelumEstoque.DAO;
+using CaelumEstoque.Filtro;
 using CaelumEstoque.Models;
 
 namespace CaelumEstoque.Controllers
 {
+    //ANOTATION DA CLASSE FILTER PARA PERMISSIONAR TODA A CLASSE
+    [AutotizacaoFilter]
     public class ProdutoController : Controller
     {
         // GET: Produto
+        //DATA ANOTATION
         [Route("produtos", Name ="ListaProdutos")]
         public ActionResult Index()
         {
@@ -33,6 +38,8 @@ namespace CaelumEstoque.Controllers
 
         //LIMITANDO OS TIPOS DE REQUISIÇÕES SOMENTE PARA O TIPO POST
         [HttpPost]
+        //SE O TOKEN FOR VÁLIDO EXECUTA O MÉTODO, SENÃO, SERÁ REJEITADO
+        [ValidateAntiForgeryToken]
         public ActionResult Adiciona(Models.Produto produto)
         {
             //VALIDANDO CAMPO PREÇO IMPLEMENTANDO MANUALMENTE PARA ACEITAR VALOR ACIMA DE 100,00 SE O PRODUTO FOR DA CATEGORIA INFORMÁTICA

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaelumEstoque.Filtro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,8 @@ using System.Web.Mvc;
 
 namespace CaelumEstoque.Controllers
 {
+    //ANOTATION DA CLASSE FILTER PARA PERMISSIONAR TODA A CLASSE
+    [AutotizacaoFilter]
     public class CategoriaController : Controller
     {
         // GET: Categoria

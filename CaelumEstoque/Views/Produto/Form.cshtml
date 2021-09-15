@@ -2,6 +2,8 @@
 <fieldset>
     <legend>Preencha os dados abaixo:</legend>
     <form action="/Produto/Adiciona" method="post" class="">
+        <!--MÉTODO DO TOKEN PARA PROTEGER A APLICAÇÃO DE ATAQUES CROSS SITE REQUEST FORGERY-->
+        @Html.AntiForgeryToken();
         <div class="form-group row col-md-12">
             <label for="nome" class="col-md-2">Nome:</label>
             <div class="col-md-4">
